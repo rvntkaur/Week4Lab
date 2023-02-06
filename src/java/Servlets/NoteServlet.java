@@ -53,7 +53,10 @@ public class NoteServlet extends HttpServlet {
         
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
         String title = request.getParameter("title"); 
-       
+        String content = request.getParameter("content"); 
+        
+        Note note = new Note (title, content);
+        request.setAttribute("note", note);
     }
 
 
