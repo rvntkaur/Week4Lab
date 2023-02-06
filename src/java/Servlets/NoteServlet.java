@@ -1,6 +1,9 @@
 
 package Servlets;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,19 +20,22 @@ public class NoteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp")
-                .forward(request, response);
+         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
+         
+         BufferedReader br = new BufferedReader (new FileReader(new File(path)));
+            
+            String title = br.readLine();
+            String contents = br.readLine();
+            br.close(); 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        String title = request.getParameter("title"); 
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+
 
 }
