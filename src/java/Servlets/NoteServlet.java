@@ -51,7 +51,9 @@ public class NoteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String path = getServletContext().getRealPath("/WEB-INF/note.txt");
         String title = request.getParameter("title"); 
+       
     }
 
 
